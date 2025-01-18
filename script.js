@@ -12,14 +12,14 @@ function getWeather() {
 
   fetch(currentWeatherUrl)
     .then((response) => {
-      response.json();
+      return response.json(); // Add `return` here to ensure the parsed JSON is passed to the next `then`
     })
     .then((data) => {
       displayWeather(data);
     })
     .catch((error) => {
-      console.log("Error fetching current weather data : ", error);
-      alert("Error fetching current weather data. Please Try again");
+      console.log("Error fetching current weather data:", error);
+      alert("Error fetching current weather data. Please try again.");
     });
 
   fetch(forecastUrl)
